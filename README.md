@@ -1,6 +1,6 @@
 # Jenkins JNLP Agent Docker image with the kubectl and helm pre-installed
   
-This image is based on the official Jenkins jnlp-slave image. 
+The image is based on the official Jenkins jnlp-slave image. 
   
 It allows for a jenkins slave deployed into a kubernetes cluster to be able to run the kubectl and helm commands.
   
