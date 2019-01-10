@@ -1,7 +1,7 @@
 default: docker_build
 
 DOCKER_IMAGE ?= michaljirman/jenkins-jnlp-slave
-DOCKER_TAG ?= `git rev-parse --abbrev-ref HEAD`
+DOCKER_TAG ?= v0.2
 
 docker_build:
 	@docker build \
@@ -11,4 +11,7 @@ docker_build:
 
 docker_push:
 	# Push to DockerHub
-	docker push $(DOCKER_IMAGE):$(DOCKER_TAG)
+	@docker push $(DOCKER_IMAGE):$(DOCKER_TAG)
+
+docker_login:
+	@docker log -u ${DOCKER_USER} -p ${DOCKER_PASS}
