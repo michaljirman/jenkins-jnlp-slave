@@ -1,7 +1,7 @@
 default: docker_build
 
 DOCKER_IMAGE ?= michaljirman/jenkins-jnlp-slave
-DOCKER_TAG ?= v0.2
+DOCKER_TAG ?= v0.3
 
 docker_build:
 	@docker build \
