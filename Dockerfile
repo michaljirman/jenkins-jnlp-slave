@@ -55,6 +55,14 @@
 
 FROM jenkins/jnlp-slave:3.27-1
 
+ARG VCS_REF
+ARG BUILD_DATE
+
+LABEL org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-url="https://github.com/michaljirman/jenkins-jnlp-slave" \
+      org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.docker.dockerfile="/Dockerfile"
+
 # Running as root to have an easy support for Docker
 USER root
 
@@ -62,6 +70,8 @@ USER root
 RUN apt-get -qq update && \
     apt-get -qq -y install curl && \
     curl -sSL https://get.docker.com/ | sh
+RUN usermod -aG docker jenkins
+
 
 # Install kubectl and helm
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && \
